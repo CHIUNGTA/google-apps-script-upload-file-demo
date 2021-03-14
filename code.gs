@@ -1,9 +1,9 @@
-var _sheetToken = '10YG3786JE88r67zUlC86SzMP0eraAYjONFujkJfpHvs';
+var _sheetToken = '&&&&&&&&&&&&&&';
 var _dataTablegId= '515344256';
 
 function doGet() {
     return HtmlService.createHtmlOutputFromFile('example').setTitle(
-        '簡易報帳登打系統'
+        '建議資料上傳系統'
     );
 }
 
@@ -21,7 +21,7 @@ function GetSheetData(sheetId, sheetName, range) {
 
 function saveFile(obj, fileName, folderName) {
     try {
-        var dropbox = '收據資料';
+        var dropbox = '資料夾名稱';
         var folder,
             folders = DriveApp.getFoldersByName(dropbox);
 
@@ -52,7 +52,7 @@ function saveFile(obj, fileName, folderName) {
 
 
 function getSheetDataExample() {
-    return GetSheetData('10YG3786JE88r67zUlC86SzMP0eraAYjONFujkJfpHvs', '專案', '!A2:C')
+    return GetSheetData('%%%%%%%%%%%%%%%', '專案', '!A2:C')
 }
 
 function getProjectList() {
@@ -190,7 +190,7 @@ function createFolder(folderID, folderName) {
 
 function saveFiles(obj,date) {
   try{
-        var baseFolderId = '1kujd5Sey8yXddW1xtVg9-i-vPADhLFS-';
+        var baseFolderId = '%%%%%%%%%%%%%%%%%%%%%%%%%%';
         var sId = createFolder(baseFolderId, date.split('_')[0]);
         console.log(sId)
         var fId = createFolder(sId, date.split('_')[1]);
@@ -211,7 +211,7 @@ return {message:e.toString()};
 
 
 function createZip(obj,date) {
-  var baseFolderId = '1kujd5Sey8yXddW1xtVg9-i-vPADhLFS-';
+  var baseFolderId = '%%%%%%%%%%%%%%%%%%%%%';
         var sId = createFolder(baseFolderId, date.split('_')[0]);
         console.log(sId)
         var fId = createFolder(sId, date.split('_')[1]);
