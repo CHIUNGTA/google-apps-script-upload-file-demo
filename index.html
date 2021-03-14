@@ -1,0 +1,352 @@
+<html>
+
+<head>
+    <base target="_top">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>報帳紀錄小幫手</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/checkout/">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+    <!-- <link href="form-validation.css" rel="stylesheet"> -->
+    <!-- <style shopback-extension-v6-2-6="" data-styled-version="4.2.0"></style> -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+
+    <!-- bootstrap 4.x is supported. You can also use the bootstrap css 3.3.x versions -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/css/fileinput.min.css" media="all"
+        rel="stylesheet" type="text/css" />
+    <!-- if using RTL (Right-To-Left) orientation, load the RTL CSS file after fileinput.css by uncommenting below -->
+    <!-- link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/css/fileinput-rtl.min.css" media="all" rel="stylesheet" type="text/css" /-->
+    <!-- the font awesome icon library if using with `fas` theme (or Bootstrap 4.x). Note that default icons used in the plugin are glyphicons that are bundled only with Bootstrap 3.x. -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <!-- piexif.min.js is needed for auto orienting image files OR when restoring exif data in resized images and when you
+    wish to resize images before upload. This must be loaded before fileinput.min.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/js/plugins/piexif.min.js"
+        type="text/javascript"></script>
+    <!-- sortable.min.js is only needed if you wish to sort / rearrange files in initial preview. 
+    This must be loaded before fileinput.min.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/js/plugins/sortable.min.js"
+        type="text/javascript"></script>
+    <!-- popper.min.js below is needed if you use bootstrap 4.x (for popover and tooltips). You can also use the bootstrap js 
+   3.3.x versions without popper.min.js. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- bootstrap.min.js below is needed if you wish to zoom and preview file content in a detail modal
+    dialog. bootstrap 4.x is supported. You can also use the bootstrap js 3.3.x versions. -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous">
+    </script>
+    <!-- the main fileinput plugin file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/js/fileinput.min.js"></script>
+    <!-- following theme script is needed to use the Font Awesome 5.x theme (`fas`) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/themes/fas/theme.min.js"></script>
+    <!-- optionally if you need translation for your language then include the locale file as mentioned below (replace LANG.js with your language locale) -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/js/locales/LANG.js"></script> -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
+</head>
+
+<body class="bg-light" data-new-gr-c-s-check-loaded="14.997.0" data-gr-ext-installed="" cz-shortcut-listen="true">
+
+    <div class="container">
+        <div class="py-5 text-center">
+            <img class="d-block mx-auto mb-4" src="https://www.moedict.tw/%E5%A0%B1%E5%B8%B3.png" alt="" width="120"
+                height="120">
+            <h3>逢甲智慧運輸與物流創新中心報帳登打系統</h3>
+            <!-- <p class="lead">測試中~~</p><br> -->
+
+            <!-- <input name="file" id="files" type="file" multiple> -->
+            <!-- <input id="input-b3" name="input-b3[]" type="file" class="file" multiple data-show-upload="false"
+        data-show-caption="false" data-msg-placeholder="Select {files} for upload...">
+      <input type='button' value='Upload' onclick='getFiles()'> -->
+
+        </div>
+
+        <div class="row">
+
+            <div class="container">
+                <form class="needs-validation" novalidate="">
+                    <div class="row">
+                        <div class="col-md-5 mb-3">
+                            <label for="account">帳號</label>
+                            <input type="text" class="form-control" id="account" placeholder="" value="" required="">
+
+                        </div>
+                        <div class="col-md-5 mb-3">
+                            <label for="password">密碼</label>
+                            <input type="password" class="form-control" id="password" placeholder="" value=""
+                                required="">
+                        </div>
+                        <div class="col-md-2 mb-2">
+                            <br>
+                            <label for="rememberPwd">記住密碼</label>
+                            <input type="checkbox" class="form-validation" ID="chkRememberPwd" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="username">計劃案名稱</label>
+                        <select class="custom-select d-block w-100" id="projectList" required="">
+                            <!-- <option value="">請選擇</option>
+              <option>United States</option> -->
+                        </select>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label for="username">會計科目</label>
+                        <select class="custom-select d-block w-100" id="accountingList" required="">
+                        </select>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label for="content">說明<span class="text-muted">(需補充說明事項可填寫在這)</span></label>
+                        <div class="form-group">
+                            <textarea class="form-control" id="remark" rows="3"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="content">購入日期<span class="text-muted">(發票開立日期)</span></label>
+                        <input class="form-control" type="date" value="" id="buyDate">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="address2">金額 <span class="text-muted">(需與發票金額相同)</span></label>
+                        <input type="number" class="form-control" id="fee" placeholder="限填整數">
+                        <form id="rates">
+                            <input type="radio" name="rate" value="已墊付" checked> 本人已墊付
+                            <input type="radio" name="rate" value="預支款項"> 預支款項
+                        </form>
+                    </div>
+                    <hr class="mb-4">
+                    <label for="photo">收據照片 <span class="text-muted">(一次最多5張)</span></label>
+                    <input id="input-b3" name="input-b3[]" type="file" class="file" multiple data-show-upload="false"
+                        data-show-caption="false" data-msg-placeholder="Select {files} for upload...">
+                    <hr class="mb-4">
+
+                    <!--   <input type='button' value='Upload' onclick='getFiles()'> -->
+
+
+                    <button class="btn btn-dark btn-lg btn-block" type="button" onclick="sendData()">確認送出</button>
+
+                </form>
+            </div>
+        </div>
+
+        <footer class="my-5 pt-5 text-muted text-center text-small">
+            <p class="mb-1">© 2021 簡單開發</p>
+        </footer>
+    </div>
+
+
+    <script>
+        // 基本參數載入
+        $(function () {
+            console.log(moment().format('YYYY/MM/DD'));
+            doSomething();
+            getSession();
+            document.getElementById('buyDate').valueAsDate = new Date();;
+            google.script.run.withSuccessHandler(addProjectList).getProjectList();
+            google.script.run.withSuccessHandler(addAccountList).getAccounting();
+        });
+
+        function setSession(acc ,pws) {
+            sessionStorage.setItem(acc, pws);
+        }
+
+        function getSession() {
+console.log('getSession')
+if(sessionStorage.length!=0){
+for (const [key, value] of Object.entries(sessionStorage )) {
+                console.log({
+                    key,
+                    value
+                });
+                document.getElementById('account').value = key;
+                document.getElementById('password').value = value;
+                break;
+            };
+}
+
+            
+        }
+
+        function getFiles() {
+            console.log('開始上傳');
+            const f = document.getElementById('input-b3');
+            const r = Promise.all([...f.files].map((file, i) => {
+                    const fr = new FileReader();
+                    return new Promise((r) => {
+                        fr.onload = (e) => {
+                            const data = e.target.result.split(",");
+                            return r({
+                                fileName: f.files[i].name,
+                                mimeType: data[0].match(/:(\w.+);/)[1],
+                                data: data[1]
+                            });
+                        }
+                        fr.readAsDataURL(file);
+                    });
+                }))
+                .then((obj) => {
+                    let dateText = moment().format("YYYYMMDD_HHmmss");
+                    google.script.run.withSuccessHandler((response) => {
+                        console.log(response);
+                        if (response.status == 'ok') {
+                            appendSheet(dateText, response.fId);
+                        } else {
+                            swal.close();
+                            alert(`🦄發生錯誤:${response.message}`);
+                        }
+                    }).saveFiles(obj, dateText);
+                });
+        }
+
+
+        const list = [1, 2, 3, 4]
+        const doSomething = async () => {
+            for (const item of list) {
+                await sleep(1000)
+                console.log('🦄')
+            }
+        };
+
+
+
+        function saveFile(data, folderName) {
+            console.log('save file');
+            const f = document.getElementById('input-b3').files;
+            google.script.run.withSuccessHandler((status) => {
+                console.log(status);
+            }).Y(f);
+        }
+
+        function addProjectList(data) {
+            if (data) {
+                console.log('計劃案載入成功');
+            }
+            let select = document.getElementById('projectList');
+            for (let i in data) {
+                let opt = document.createElement('option');
+                opt.value = data[i][0];
+                opt.innerHTML = `${data[i][0]}-${data[i][2]}`;
+                select.appendChild(opt);
+            }
+        };
+
+        function addAccountList(data) {
+            let select = document.getElementById('accountingList');
+            if (data) {
+                console.log('取得會計科目');
+            }
+            for (let i in data) {
+                let opt = document.createElement('option');
+                opt.value = data[i][0];
+                opt.innerHTML = `${data[i][0]}${data[i][1]}`;
+                select.appendChild(opt);
+            }
+        };
+
+        function login(a, p) {
+            google.script.run.withSuccessHandler((result) => {
+                if (!result.status) {
+                    //密碼錯誤
+                    Swal.fire({
+                        icon: 'error',
+                        title: `${result.message}...`,
+                        text: '請詢問榮庭大神解決方法吧!',
+                        footer: '<a href="mailto:jim.chiu@mail.fcu.edu.tw">您也可以嘗試寄信給開發人員</a>'
+                    });
+                    document.getElementById('account').value = '';
+                    document.getElementById('password').value = '';
+                    document.getElementById('account').focus();
+                } else {
+                    // 登入成功，儲存密碼
+                    setSession(a,p);
+                    getFiles();
+                }
+            }).getLogin(a, p);
+        };
+
+        function sendData() {
+            console.log('開始上傳');
+            Swal.fire({
+                title: '請稍後資料上傳中 !',
+                html: '<h5>不要太急，這是免費的東西</h5>', // add html attribute if you want or remove
+                allowOutsideClick: false,
+                onBeforeOpen: () => {
+                    Swal.showLoading()
+                },
+            });
+            console.log('sendData');
+            let acc = document.getElementById('account').value;
+            let password = document.getElementById('password').value;
+            login(acc, password);
+        }
+
+        function appendSheet(folderName, fId) {
+            let id = folderName;
+            let acc = document.getElementById('account').value;
+            let project = document.getElementById('projectList').value;
+            let accounting = document.getElementById('accountingList').value;
+            let remark = document.getElementById('remark').value;
+            let fee = document.getElementById('fee').value;
+            let buyDate = document.getElementById('buyDate').value;
+            let type = document.forms[0].rate.value;
+            let obj = {
+                id: id,
+                account: acc,
+                project: project,
+                accounting: accounting,
+                remark: remark,
+                fee: fee,
+                type: type,
+                buyDate: buyDate,
+                fId: fId
+            };
+
+            google.script.run.withSuccessHandler((result) => {
+                console.log(result);
+                if (result == 'ok') {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: '您已上傳成功，即將自動刷新刷新',
+                        showConfirmButton: false,
+                        timer: 3000
+                    });
+                    window.open(
+                        "https://script.google.com/a/macros/mail.fcu.edu.tw/s/AKfycbz4mAf8Rm7pGW6JZzf0nUJPyDdVnOVO4qMjq2aatoo0kdMIt9J3O8AV/exec",
+                        '_top');
+                } else {
+                    alert('產生未知錯誤，請重新再試一次');
+                }
+            }).appendFee(obj);
+
+        }
+
+        function sleep(milliseconds) {
+            return new Promise(resolve => setTimeout(resolve, milliseconds))
+        }
+    </script>
+
+
+</body>
+
+</html>
